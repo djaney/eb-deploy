@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+pwd=$(pwd)
+
+for d in */ ; do
+    cd "$pwd/$d"
+    echo "Deploying $d"
+    git pull
+    eb deploy --quiet
+    echo "DONE"
+done
