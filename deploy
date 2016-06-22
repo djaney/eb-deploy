@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 pwd=$(pwd)
 
+echo "Hello, I will plant your beanstalks for you. :D"
+
 for d in */ ; do
     cd "$pwd/$d"
-    echo "Deploying $d"
-    git pull
-    eb deploy --quiet
-    echo "DONE"
+    echo "Planting $d..."
+    git pull --quiet &
+    eb deploy --quiet &
 done
+echo "Beanstalks are still growing! Do not Close..."
+wait
+echo "Your beanstalks has reached the clouds!"
